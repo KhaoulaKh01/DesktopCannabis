@@ -1,0 +1,61 @@
+﻿<Page x:Class="projetCannabis.PageHistoriquePlantule"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:projetCannabis"
+      mc:Ignorable="d"
+      d:DesignHeight="800"
+      d:DesignWidth="550"
+      Title="Historique des Modifications" Background="Black">
+
+    <!-- Déclaration de la ressource pour le convertisseur -->
+    <Page.Resources>
+        <local:EtatSanteToColorConverter x:Key="EtatSanteConverter" />
+    </Page.Resources>
+
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <StackPanel Orientation="Horizontal" Grid.Row="0" Margin="0,40,-200,10" HorizontalAlignment="Center">
+            <Image Source="/logoCannabis.png" Height="70" Width="70" Margin="0,0,10,0"/>
+            <TextBlock Text="Historique des modifications" FontSize="30" Foreground="Gold" VerticalAlignment="Center"/>
+        </StackPanel>
+
+        <!-- DataGrid pour afficher l'historique -->
+        <Border Grid.Row="1" Background="#FF2E2E2E" Padding="10" CornerRadius="10" Margin="5,5,5,5" HorizontalAlignment="Center">
+            <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+                <DataGrid x:Name="historiqueDataGrid" AutoGenerateColumns="False" CanUserAddRows="False" IsReadOnly="True" ItemsSource="{Binding HistoriqueModifications}" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Date Modification" Binding="{Binding DateModification}" />
+                        <DataGridTextColumn Header="Description" Binding="{Binding Description}" />
+                        <DataGridTextColumn Header="Provenance" Binding="{Binding Provenance}" />
+                        <DataGridTextColumn Header="État de santé" Binding="{Binding EtatSante}">
+                            <DataGridTextColumn.ElementStyle>
+                                <Style TargetType="{x:Type TextBlock}">
+                                    <Setter Property="Background" Value="{Binding EtatSante, Converter={StaticResource EtatSanteConverter}}" />
+                                </Style>
+                            </DataGridTextColumn.ElementStyle>
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="Stade de vie" Binding="{Binding StadeVie}" />
+                        <DataGridTextColumn Header="Actif/Inactif" Binding="{Binding ActifInactif}" />
+                        <DataGridTextColumn Header="Entreposage" Binding="{Binding Entreposage}" />
+                        <DataGridTextColumn Header="Item retiré de l'inventaire" Binding="{Binding ItemRetireInventaire}" />
+                        <DataGridTextColumn Header="Responsable de décontamination" Binding="{Binding ResponsableDecontamination}" />
+                        <DataGridTextColumn Header="Note" Binding="{Binding Note}" />
+                    </DataGrid.Columns>
+                </DataGrid>
+            </ScrollViewer>
+        </Border>
+
+        <!-- Bouton pour imprimer l'historique -->
+        <StackPanel Orientation="Horizontal" Grid.Row="2" Margin="0,10,0,0" HorizontalAlignment="Center">
+            <Button Content="Imprimer" Width="150" Height="30" Background="Gold" Foreground="Black" FontWeight="Bold" Click="BtnImprimerHistorique_Click"/>
+        </StackPanel>
+    </Grid>
+</Page>

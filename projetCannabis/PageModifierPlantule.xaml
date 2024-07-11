@@ -1,0 +1,181 @@
+﻿<Page x:Class="projetCannabis.PageModifierPlantule"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:projetCannabis"
+      mc:Ignorable="d" 
+      d:DesignHeight="800" d:DesignWidth="550"
+      Background="Black"
+      Title="PageModifierPlantule">
+
+
+    <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" MinWidth="420"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- Header -->
+                <StackPanel Orientation="Horizontal" Grid.Row="0" Margin="0,30,0,10" HorizontalAlignment="Center">
+                    <Image Source="/logoCannabis.png" Height="70" Width="70" Margin="0,0,10,0"/>
+                    <TextBlock Text="Modifier Plantule" FontSize="30" Foreground="Gold" VerticalAlignment="Center"/>
+                </StackPanel>
+
+                <!-- Form Fields -->
+                <StackPanel Grid.Row="1" Grid.Column="0" Margin="0">
+                    <!-- ComboBox pour sélectionner une identification -->
+                    <StackPanel Orientation="Horizontal" Margin="5">
+                        <TextBlock Text="Identification Existant" Foreground="White" Width="120" VerticalAlignment="Center"/>
+                        <ComboBox x:Name="comboBoxIdentification"  HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Margin="10"
+                  IsEditable="True" SelectionChanged="IdentificationComboBox_SelectionChanged">
+                            <ComboBox.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <VirtualizingStackPanel />
+                                </ItemsPanelTemplate>
+                            </ComboBox.ItemsPanel>
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding}" />
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+
+                        <!-- Ajouter le rectangle avec le nom 'rectangleIdentification' -->
+                        <Rectangle x:Name="rectangleIdentification" Width="20" Height="20"/>
+                        <Button Content="Ajouter" Width="50" Height="25" Margin="-10,0,0,0" Click="BtnAjouterIdentification_Click"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" Margin="5">
+                        <TextBlock Text="Dernière incrémentation:" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,0,0,0"/>
+                        <TextBlock x:Name="tbDerniereIncrementation" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,0,0,0"/>
+                    </StackPanel>
+
+
+
+                    <!-- Description -->
+                    <StackPanel Orientation="Horizontal" Margin="5">
+                        <TextBlock Text="Description" Foreground="White" Width="120" VerticalAlignment="Center"/>
+                        <TextBox x:Name="textBoxDescription" Width="200" Height="60" TextWrapping="Wrap" AcceptsReturn="True" Margin="10,0,0,0"/>
+                    </StackPanel>
+
+                    <!-- Recu en date -->
+                    <StackPanel Orientation="Horizontal" Margin="5">
+                        <TextBlock Text="Reçu en date" Foreground="White" Width="120" VerticalAlignment="Center"/>
+                        <DatePicker x:Name="datePickerRecu" Width="200" Margin="10,0,0,0"/>
+                    </StackPanel>
+
+                    <!-- Date retrait -->
+                    <StackPanel Orientation="Horizontal" Margin="5">
+                        <TextBlock Text="Date retrait" Foreground="White" Width="120" VerticalAlignment="Center"/>
+                        <DatePicker x:Name="datePickerRetrait" Width="200" Margin="10,0,0,0"/>
+                    </StackPanel>
+
+                    <!-- Item retiré inventaire -->
+                    <StackPanel Orientation="Horizontal" Margin="5">
+                        <TextBlock Text="Item retiré inventaire" Foreground="White" Width="120" VerticalAlignment="Center"/>
+                        <TextBox x:Name="textBoxItemRetireInventaire" Width="200" Margin="10,0,0,0"/>
+                    </StackPanel>
+
+                    <!-- Responsable décontamination -->
+                    <StackPanel Orientation="Horizontal" Margin="5">
+                        <TextBlock Text="Responsable décontamination" Foreground="White" Width="160" VerticalAlignment="Center"/>
+                        <ComboBox x:Name="comboBoxResponsable" Width="150" Margin="10,0,0,0" SelectionChanged="comboBoxResponsable_SelectionChanged"/>
+                    </StackPanel>
+
+                    <!-- Actif/Inactif -->
+                    <StackPanel Orientation="Horizontal" Margin="5">
+                        <TextBlock Text="Actif/Inactif" Foreground="White" Width="100" VerticalAlignment="Center"/>
+                        <ComboBox x:Name="comboBoxActifInactif" Width="200" Height="20" Margin="0,0,0,0" SelectionChanged="comboBoxActifInactif_SelectionChanged">
+                            <ComboBoxItem Content="Actif" IsSelected="True"/>
+                            <ComboBoxItem Content="Inactif"/>
+                            <Rectangle x:Name="rectangleActifInactif" Width="20" Height="20" />
+                        </ComboBox>
+                    </StackPanel>
+
+                    <!-- Provenance -->
+                    <StackPanel Orientation="Horizontal" Margin="5">
+                        <TextBlock Text="Provenance" Foreground="White" Width="120" VerticalAlignment="Center"/>
+                        <TextBox x:Name="textBoxProvenance" Width="200" Margin="10,0,0,0"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" Margin="5">
+                        <TextBlock Text="Entreposage" Foreground="White" Width="120" VerticalAlignment="Center"/>
+                        <ComboBox x:Name="comboBoxEntreposage"  HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Margin="10"
+      IsEditable="True" SelectionChanged="comboBoxEntreposage_SelectionChanged">
+                            <ComboBox.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <VirtualizingStackPanel />
+                                </ItemsPanelTemplate>
+                            </ComboBox.ItemsPanel>
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding}" />
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+
+                        <!-- Ajouter le rectangle avec le nom 'rectangleIdentification' -->
+                        <Rectangle x:Name="rectangleEntreposage" Width="20" Height="20"/>
+                        <Button Content="Ajouter" Width="50" Height="25" Margin="-10,0,0,0" Click="BtnAjouterEntreposage_Click"/>
+                    </StackPanel>
+
+
+
+                    <!-- État de santé -->
+            <StackPanel Orientation="Horizontal" Margin="5">
+                <TextBlock Text="État de santé" Foreground="White" Width="120" VerticalAlignment="Center"/>
+                <ComboBox x:Name="comboBoxCouleurs" Width="200" Margin="10,0,0,0" SelectionChanged="comboBoxCouleurs_SelectionChanged">
+                    <ComboBoxItem Tag="Bonne santé">
+                        <Rectangle Width="200" Height="25" Fill="Green"/>
+                    </ComboBoxItem>
+                    <ComboBoxItem Tag="Moyenne santé">
+                        <Rectangle Width="200" Height="25" Fill="Yellow"/>
+                    </ComboBoxItem>
+                    <ComboBoxItem Tag="Mauvaise santé">
+                        <Rectangle Width="200" Height="25" Fill="Orange"/>
+                    </ComboBoxItem>
+                    <ComboBoxItem Tag="Santé en danger">
+                        <Rectangle Width="200" Height="25" Fill="Red"/>
+                    </ComboBoxItem>
+                </ComboBox>
+                <Rectangle x:Name="rectangleCouleur" Width="25" Height="25" Margin="5" Stroke="Black" StrokeThickness="1"/>
+                <TextBlock x:Name="tbEtatSante" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,0,0,0"/>
+            </StackPanel>
+
+
+            <!-- Stade de vie -->
+                    <StackPanel Orientation="Horizontal" Margin="5">
+                        <TextBlock Text="Stade de vie" Foreground="White" Width="120" VerticalAlignment="Center"/>
+                        <ComboBox x:Name="comboBoxStadeVie" Width="200" Margin="10,0,0,0" SelectionChanged="comboBoxStadeVie_SelectionChanged">
+                            <ComboBoxItem Content="Initiation"/>
+                            <ComboBoxItem Content="Microdissection"/>
+                            <ComboBoxItem Content="Magenta"/>
+                            <ComboBoxItem Content="Double magenta"/>
+                            <ComboBoxItem Content="Hyproponie"/>
+                        </ComboBox>
+                    </StackPanel>
+
+                    <!-- Note -->
+                    <StackPanel Orientation="Horizontal" Margin="5">
+                        <TextBlock Text="Note" Foreground="White" Width="120" VerticalAlignment="Center"/>
+                        <TextBox x:Name="textBoxNote" Width="200" Height="60" TextWrapping="Wrap" AcceptsReturn="True" Margin="10,0,0,0"/>
+                    </StackPanel>
+                </StackPanel>
+
+                <!-- Footer -->
+                <StackPanel Orientation="Horizontal" Grid.Row="3" HorizontalAlignment="Center" Margin="0,10">
+                    <Button Content="Confirmer" Width="105" Margin="10" Background="#FFD700" Foreground="Black" FontWeight="Bold" Click="BtnConfirmer_Click"/>
+                    <Button Content="Annuler" Width="105" Margin="10" Background="#FFD700" Foreground="Black" FontWeight="Bold" Click="BtnAnnuler_Click"/>
+                    <Button Content="Retour " Width="140" Margin="10" Background="#FFD700" Foreground="Black" FontWeight="Bold" Click="BtnRetour_Click"/>
+                </StackPanel>
+            </Grid>
+        </Page>
+  

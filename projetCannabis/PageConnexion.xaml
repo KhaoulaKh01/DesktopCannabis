@@ -1,0 +1,49 @@
+﻿<Page x:Class="projetCannabis.PageConnexion"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:projetCannabis"
+      mc:Ignorable="d"
+      d:DesignHeight="800"
+      d:DesignWidth="550"
+      Background="Black"
+      Title="PageConnexion">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Header -->
+        <StackPanel Orientation="Horizontal" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,50,0,10">
+            <Image Source="/logoCannabis.png" Height="70" Width="70" Margin="0,0,10,0"/>
+            <TextBlock Text="Connexion" FontSize="30" Foreground="Gold" VerticalAlignment="Center" Margin="10,0,0,0"/>
+        </StackPanel>
+
+        <!-- Login Form -->
+        <StackPanel Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,20">
+            <StackPanel Orientation="Horizontal" Margin="5">
+                <Label Content="Nom Utilisateur" Width="110" Foreground="White"/>
+                <ComboBox x:Name="cbNomUtilisateur" Width="200" Background="White" Foreground="Black" IsEditable="True" TextBoxBase.TextChanged="CbNomUtilisateur_TextChanged" SelectionChanged="CbNomUtilisateur_SelectionChanged"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="5">
+                <Label Content="Mot de Passe" Width="110" Foreground="White"/>
+                <PasswordBox x:Name="tbMotDePasse" Width="200" Background="White" Foreground="Black"/>
+            </StackPanel>
+        </StackPanel>
+
+        <!-- Buttons -->
+        <StackPanel Orientation="Horizontal" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,20">
+            <Button Content="Connexion" Width="105" Margin="10" Background="#FFD700" Foreground="Black" FontWeight="Bold" Click="BtnConnexion_Click"/>
+            <Button Content="Annuler" Width="105" Margin="10" Background="#FFD700" Foreground="Black" FontWeight="Bold" Click="BtnAnnuler_Click"/>
+        </StackPanel>
+    </Grid>
+</Page>

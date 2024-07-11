@@ -1,0 +1,65 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="AcceuilCannabis.png" />
+    <None Remove="ajoutCannabis.png" />
+    <None Remove="archive.png" />
+    <None Remove="Archive0.png" />
+    <None Remove="drive.png" />
+    <None Remove="feuilleCannabisVerte.png" />
+    <None Remove="folder.png" />
+    <None Remove="gestion.png" />
+    <None Remove="gestionUtilisateur.png" />
+    <None Remove="importation.png" />
+    <None Remove="importer.png" />
+    <None Remove="logoCannabis.png" />
+    <None Remove="plantule.png" />
+    <None Remove="plantule0.png" />
+    <None Remove="recherche.png" />
+    <None Remove="ScanQR.png" />
+    <None Remove="sdcard.png" />
+    <None Remove="user.png" />
+    <None Remove="user0.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="ClosedXML" Version="0.102.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.6" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.6" />
+    <PackageReference Include="QRCoder" Version="1.6.0" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.6" />
+    <PackageReference Include="System.Drawing.Common" Version="8.0.6" />
+    <PackageReference Include="ZXing.Net" Version="0.16.9" />
+    <PackageReference Include="ZXing.Net.Bindings.Windows.Compatibility" Version="0.16.12" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="AcceuilCannabis.png" />
+    <Resource Include="ajoutCannabis.png" />
+    <Resource Include="archive.png" />
+    <Resource Include="Archive0.png" />
+    <Resource Include="drive.png" />
+    <Resource Include="feuilleCannabisVerte.png" />
+    <Resource Include="folder.png" />
+    <Resource Include="gestion.png" />
+    <Resource Include="gestionUtilisateur.png" />
+    <Resource Include="importation.png" />
+    <Resource Include="importer.png" />
+    <Resource Include="logoCannabis.png" />
+    <Resource Include="plantule.png" />
+    <Resource Include="plantule0.png" />
+    <Resource Include="recherche.png" />
+    <Resource Include="ScanQR.png" />
+    <Resource Include="sdcard.png" />
+    <Resource Include="user0.png" />
+  </ItemGroup>
+
+</Project>
